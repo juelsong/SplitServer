@@ -37,5 +37,9 @@
     <ProjectReference Include="..\DataGenerator\DataGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Db\" />
+  </ItemGroup>
+
   
 </Project>

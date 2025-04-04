@@ -34,7 +34,7 @@ namespace ESys.Db.PostgreSQL.Master
                 {
                     1, 
                     "Test", 
-                    0, 
+                    3, 
                     DateTime.SpecifyKind(new DateTime(2121, 12, 21, 0, 50, 48, 20), DateTimeKind.Unspecified),
                     "Host=127.0.0.1;Port=5432;Database=etestData;User Id=postgres;Password=123456;",
                     "Test",

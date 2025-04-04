@@ -36,6 +36,7 @@ namespace ESys.Security.Entity
     /// </summary>
     [DeactivateCheck(nameof(Department.Employees), nameof(User.RealName))]
     [DeactivateCheck(nameof(Department.Children), nameof(Department.Name))]
+    [AuditDisable]
     public partial class Department : BizEntity<Department, int>, ITimedEntity, ITraceableEntity, IActiveEntity
     {
         /// <summary>

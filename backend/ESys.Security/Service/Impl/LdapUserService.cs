@@ -186,7 +186,6 @@ namespace ESys.Security.Service
                     : user.Roles.SelectMany(r => r.Permissions).Distinct())
                 .Select(p => new UserPermission() { Code = p.Code, Type = (int)p.Type })
                 .ToArray();
-            var locationId = null == user.LocationId ? 0 : user.LocationId.Value;
             var userInfo = new UserInfo()
             {
                 Account = user.Account,
@@ -194,7 +193,6 @@ namespace ESys.Security.Service
                 Permissions = permissions,
                 Roles = roles,
                 Name = user.RealName,
-                LocationId = locationId
             };
 
             userInfo.Profile ??= new Profile();

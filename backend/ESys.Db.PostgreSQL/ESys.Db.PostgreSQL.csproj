@@ -12,7 +12,7 @@
     <OutputPath>$(SolutionDir)$(Configuration)_$(Platform)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
-    <DefineConstants>MIGRATION_MYSQL</DefineConstants>
+    <DefineConstants>MIGRATION_POSTGRESQL</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup>

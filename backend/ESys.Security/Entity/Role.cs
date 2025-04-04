@@ -36,6 +36,8 @@ namespace ESys.Security.Entity
     /// 角色实体
     /// </summary>
     [DeactivateCheck(nameof(Role.Users), nameof(User.Account))]
+    [AuditDisable]
+
     public partial class Role : BizEntity<Role, int>, ITimedEntity, ITraceableEntity, IHiddenEntity, IActiveEntity
     {
         /// <summary>

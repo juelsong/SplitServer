@@ -205,24 +205,24 @@ namespace ESys.Extensions
                     // 客户端离线批量提交
                     if (context.Request.Headers.TryGetValue(ConstDefs.RequestHeader.Offline, out var offlineData))
                     {
-                        using var scope = context.RequestServices.CreateScope();
-                        var str = Encoding.UTF8.GetString(Convert.FromBase64String(offlineData));
-                        var esArray = JsonSerializer.Deserialize<ElectronicSignature[]>(str);
-                        var ddd = esArray.Select(es => new ESignData()
-                        {
-                            Account = es.Account,
-                            RealName = es.RealName,
-                            ESignedBy = es.UserId,
-                            Timestamp = es.SignDate,
-                            IpAddress = es.IpAddress,
-                            Category = es.Category,
-                            Comment = es.Comment,
-                            UserId = es.CreateBy,
-                            IsSystemOperation = es.IsSystemOperation,
-                            Order = es.Order,
-                        }).ToArray();
+                        //using var scope = context.RequestServices.CreateScope();
+                        //var str = Encoding.UTF8.GetString(Convert.FromBase64String(offlineData));
+                        //var esArray = JsonSerializer.Deserialize<ElectronicSignature[]>(str);
+                        //var ddd = esArray.Select(es => new ESignData()
+                        //{
+                        //    Account = es.Account,
+                        //    RealName = es.RealName,
+                        //    ESignedBy = es.UserId,
+                        //    Timestamp = es.SignDate,
+                        //    IpAddress = es.IpAddress,
+                        //    Category = es.Category,
+                        //    Comment = es.Comment,
+                        //    UserId = es.CreateBy,
+                        //    IsSystemOperation = es.IsSystemOperation,
+                        //    Order = es.Order,
+                        //}).ToArray();
                         // 批量处理时会每个子请求创建Scope，IDataInjector失效
-                        context.Features.Set<IESignFeature>(new ESignFeature(ddd));
+                        //context.Features.Set<IESignFeature>(new ESignFeature(ddd));
                     }
                     context.Response.Headers["Access-Control-Allow-Origin"] = "*";
                     return base.ProcessBatchAsync(context, nextHandler);

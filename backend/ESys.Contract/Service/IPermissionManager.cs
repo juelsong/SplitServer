@@ -52,11 +52,11 @@ namespace ESys.Contract.Service
         /// <param name="permissions"></param>
         /// <returns></returns>
         bool HasAnyPermission(int userId, params string[] permissions);
-        /// <summary>
-        /// 获取用户位置面包屑
-        /// </summary>
-        /// <param name="userId">用户Id</param>
-        /// <returns></returns>
-        string GetUserBreadcrumb(int userId);
+        ///// <summary>
+        ///// 获取用户位置面包屑
+        ///// </summary>
+        ///// <param name="userId">用户Id</param>
+        ///// <returns></returns>
+        //string GetUserBreadcrumb(int userId);
     }
 }

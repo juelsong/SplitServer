@@ -124,18 +124,18 @@ namespace ESys.Security.Service
                 .FirstOrDefault();
             return user.IsSuper || user.Permissions.Any(c => permissions.Contains(c));
         }
-        /// <summary>
-        /// 获取用户位置面包屑
-        /// </summary>
-        /// <param name="userId">用户Id</param>
-        /// <returns></returns>
-        public string GetUserBreadcrumb(int userId)
-        {
-            return this.msRepository.Slave1<User>()
-                                    .AsQueryable(false)
-                                    .Where(u => u.Id == userId)
-                                    .Select(u => u.Location.LocationExtra.Breadcrumb)
-                                    .FirstOrDefault();
-        }
+        ///// <summary>
+        ///// 获取用户位置面包屑
+        ///// </summary>
+        ///// <param name="userId">用户Id</param>
+        ///// <returns></returns>
+        //public string GetUserBreadcrumb(int userId)
+        //{
+        //    return this.msRepository.Slave1<User>()
+        //                            .AsQueryable(false)
+        //                            .Where(u => u.Id == userId)
+        //                            .Select(u => u.Location.LocationExtra.Breadcrumb)
+        //                            .FirstOrDefault();
+        //}
     }
 }

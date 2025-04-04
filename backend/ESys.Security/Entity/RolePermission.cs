@@ -23,6 +23,7 @@
  */
 
 using ESys.Contract.Entity;
+using ESys.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ namespace ESys.Security.Entity
     /// <summary>
     /// 角色权限关联
     /// </summary>
+    [AuditDisable]
     public partial class RolePermission : BizEntity<RolePermission, int>, ITraceableEntity, ITimedEntity
     {
         /// <summary>

@@ -43,5 +43,9 @@
     <ProjectReference Include="..\DataAnnotations\DataAnnotations.csproj" OutputItemType="Analyzer" />
     <ProjectReference Include="..\DataGenerator\DataGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="all" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Query\" />
+  </ItemGroup>
   
 </Project>

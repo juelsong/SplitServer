@@ -26,7 +26,6 @@ namespace ESys.Security.Entity
 {
     using ESys.Contract.Entity;
     using ESys.DataAnnotations;
-    using ESys.Infrastructure.Entity;
     using ESys.Utilty.Defs;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -72,7 +71,7 @@ namespace ESys.Security.Entity
     /// 用户实体
     /// </summary>
     [ODataExposed(allowCreate: false)]
-    public partial class User : BizEntity<User, int>, ITimedEntity, ITraceableEntity, IHiddenEntity, IActiveEntity
+    [AuditDisable]public partial class User : BizEntity<User, int>, ITimedEntity, ITraceableEntity, IHiddenEntity, IActiveEntity
     {
         /// <summary>
         /// 账号
@@ -179,14 +178,6 @@ namespace ESys.Security.Entity
         public virtual Department Department { get; set; }
 
         /// <summary>
-        /// 区域Id
-        /// </summary>
-        public int? LocationId { get; set; }
-        /// <summary>
-        /// 所属区域
-        /// </summary>
-        public virtual Location Location { get; set; }
-        /// <summary>
         /// 角色
         /// </summary>
         public virtual ICollection<Role> Roles { get; set; }
@@ -232,10 +223,6 @@ namespace ESys.Security.Entity
             entityBuilder.HasOne(u => u.Department)
                 .WithMany(d => d.Employees)
                 .HasForeignKey(u => u.DepartmentId);
-
-            entityBuilder.HasOne(u => u.Location)
-                .WithMany()
-                .HasForeignKey(u => u.LocationId);
         }
         /// <summary>
         /// 初始数据

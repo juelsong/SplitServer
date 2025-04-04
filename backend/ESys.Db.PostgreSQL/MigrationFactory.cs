@@ -55,7 +55,7 @@ namespace ESys.Db.DbContext
 
         public Tenant GetCurrentTenant()
         {
-            var tenantId = "Emis";
+            var tenantId = "Test";
             if (this.configurationSection == null)
             {
                 throw new NullReferenceException("configurationSection");

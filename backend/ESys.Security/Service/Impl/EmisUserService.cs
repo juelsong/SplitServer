@@ -56,7 +56,7 @@ namespace ESys.Security.Service
         private readonly IConfigService configService;
         private readonly string tenant;
         private readonly SecuritySettingOptions securitySetting;
-        private readonly INotificationService notificationService;
+        //private readonly INotificationService notificationService;
         private readonly IDistributedCache distributedCache;
         private readonly IMemoryCache memoryCache;
         private readonly ILogService log;
@@ -71,7 +71,7 @@ namespace ESys.Security.Service
             this.configService = serviceProvider.GetRequiredService<IConfigService>();
             this.securitySetting = options.Value;
             this.distributedCache = serviceProvider.GetRequiredService<IDistributedCache>();
-            this.notificationService = serviceProvider.GetRequiredService<INotificationService>();
+            //this.notificationService = serviceProvider.GetRequiredService<INotificationService>();
             this.log = serviceProvider.GetRequiredService<ILogService>();
             this.memoryCache = serviceProvider.GetRequiredService<IMemoryCache>();
             this.tenant = tenantService.GetCurrentTenant().Code;
@@ -125,7 +125,7 @@ namespace ESys.Security.Service
                     : user.Roles.SelectMany(r => r.Permissions).Distinct())
                 .Select(p => new UserPermission() { Code = p.Code, Type = (int)p.Type })
                 .ToArray();
-            var locationId = null == user.LocationId ? 0 : user.LocationId.Value;
+            //var locationId = null == user.LocationId ? 0 : user.LocationId.Value;
             var userInfo = new UserInfo()
             {
                 Account = user.Account,
@@ -133,7 +133,7 @@ namespace ESys.Security.Service
                 Permissions = permissions,
                 Roles = roles,
                 Name = user.RealName,
-                LocationId = locationId
+                //LocationId = locationId
             };
 
             userInfo.Profile ??= new Profile();
@@ -187,15 +187,15 @@ namespace ESys.Security.Service
                 .FirstOrDefault(u => u.Account == input.Account);
             if (user == null)
             {
-                await this.notificationService.AddNotification(NotificationTypes.LoginFailure,
-                       null,
-                       null,
-                       null,
-                       null,
-                       null,
-                       null,
-                       input.Account,
-                       $"{ErrorCode.User.NotExist}");
+                //await this.notificationService.AddNotification(NotificationTypes.LoginFailure,
+                //       null,
+                //       null,
+                //       null,
+                //       null,
+                //       null,
+                //       null,
+                //       input.Account,
+                //       $"{ErrorCode.User.NotExist}");
                 return (ErrorCode.User.NotExist, null, false);
             }
             var pass = PasswordHasher.HashPassword(input.Password, user.Salt);
@@ -212,15 +212,15 @@ namespace ESys.Security.Service
                     {
                         AbsoluteExpirationRelativeToNow = this.securitySetting.CheckDuration
                     });
-                await this.notificationService.AddNotification(NotificationTypes.LoginFailure,
-                    user.Id,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    input.Account,
-                    $"{ErrorCode.User.WrongPassword}");
+                //await this.notificationService.AddNotification(NotificationTypes.LoginFailure,
+                //    user.Id,
+                //    null,
+                //    null,
+                //    null,
+                //    null,
+                //    null,
+                //    input.Account,
+                //    $"{ErrorCode.User.WrongPassword}");
 
                 // 无效登录尝试次数，超过则锁定账户，0不限制
                 if (config != null
@@ -230,15 +230,15 @@ namespace ESys.Security.Service
                     this.msRepository.Master<User>().UpdateIncludeNow(
                         new User() { Id = user.Id, IsActive = false },
                         new[] { nameof(user.IsActive) });
-                    await this.notificationService.AddNotification(NotificationTypes.AccountLocked,
-                        user.Id,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        input.Account,
-                        $"{cnt}");
+                    //await this.notificationService.AddNotification(NotificationTypes.AccountLocked,
+                    //    user.Id,
+                    //    null,
+                    //    null,
+                    //    null,
+                    //    null,
+                    //    null,
+                    //    input.Account,
+                    //    $"{cnt}");
                 }
 
                 this.log.LogData(new LogInfo()
@@ -252,15 +252,15 @@ namespace ESys.Security.Service
             this.distributedCache.Remove(loginWrongPassKey);
             if (!user.IsActive)
             {
-                await this.notificationService.AddNotification(NotificationTypes.LoginFailure,
-                    user.Id,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    input.Account,
-                    $"{ErrorCode.User.Forbidden}");
+                //await this.notificationService.AddNotification(NotificationTypes.LoginFailure,
+                //    user.Id,
+                //    null,
+                //    null,
+                //    null,
+                //    null,
+                //    null,
+                //    input.Account,
+                //    $"{ErrorCode.User.Forbidden}");
                 this.log.LogData(new LogInfo()
                 {
                     Description = $"{loginError} :User Not Active",

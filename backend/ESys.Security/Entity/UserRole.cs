@@ -23,6 +23,7 @@
  */
 
 using ESys.Contract.Entity;
+using ESys.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ namespace ESys.Security.Entity
     /// <summary>
     /// 用户角色关联
     /// </summary>
+    [AuditDisable]
     public partial class UserRole : BizEntity<UserRole, int>, ITraceableEntity, ITimedEntity
     {
         /// <summary>

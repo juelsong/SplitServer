@@ -30,6 +30,9 @@
   <ItemGroup>
     <PackageReference Include="Furion.Extras.Authentication.JwtBearer" Version="4.8.8" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Query\" />
+  </ItemGroup>
   
   
 </Project>
