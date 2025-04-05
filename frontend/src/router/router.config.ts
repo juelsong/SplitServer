@@ -28,7 +28,7 @@ export const constantRouterMap: RouteRecordRaw[] = [
         : [
             {
               path: "dashboard",
-              component: () => import("@/views/dashboard/index.vue"),
+              component: () => import("@/views/dashboard/simpleDashboard.vue"),
               name: "Dashboard",
               meta: { code: "menu.dashboard", icon: "dashboard", affix: true },
             },
@@ -54,29 +54,9 @@ export const constantRouterMap: RouteRecordRaw[] = [
     ],
   },
   {
-    //http://localhost:3300/#/syncData/syncData
-    path: "/syncData",
-    redirect: "/syncData/syncData",
-    component: () => import("@/layout/index.vue"),
-    name: "syncData",
-    meta: {
-      hidden: true,
-      code: "menu.SyncData",
-      icon: "SyncData",
-      permissions: ["production"],
-    },
-    children: [
-      {
-        path: "syncData",
-        component: () => import("@/views/device/SyncData.vue"),
-        name: "syncData",
-        meta: {
-          code: "menu.region",
-          icon: "region",
-          permissions: ["region"],
-        },
-      },
-    ],
+    path: "/screen",
+    component: () => import("@/views/screen/index.vue"),
+    meta: { hidden: true },
   },
   {
     path: "/404",
@@ -140,56 +120,6 @@ const asyncRoutesArray = [
     },
     children: [
       {
-        path: "region",
-        component: () => import("@/views/region/Region.vue"),
-        name: "Region",
-        meta: {
-          code: "menu.region",
-          icon: "region",
-          permissions: ["region"],
-        },
-      },
-      {
-        path: "production",
-        component: () => import("@/views/production/Production.vue"),
-        name: "Production",
-        meta: {
-          code: "menu.production",
-          icon: "production",
-          permissions: ["production"],
-        },
-      },
-      {
-        path: "device",
-        component: () => import("@/views/device/Device.vue"),
-        name: "Device",
-        meta: {
-          code: "menu.device",
-          icon: "device",
-          permissions: ["device"],
-        },
-      },
-      {
-        path: "medium",
-        component: () => import("@/views/medium/Medium.vue"),
-        name: "Medium",
-        meta: {
-          code: "menu.medium",
-          icon: "medium",
-          permissions: ["medium"],
-        },
-      },
-      {
-        path: "microorganism",
-        component: () => import("@/views/microorganism/Microorganism.vue"),
-        name: "Microorganism",
-        meta: {
-          code: "menu.microorganism",
-          icon: "microorganism",
-          permissions: ["microorganism"],
-        },
-      },
-      {
         path: "security",
         component: () => import("@/views/security/Security.vue"),
         name: "Security",
@@ -197,16 +127,6 @@ const asyncRoutesArray = [
           code: "menu.security",
           icon: "security",
           permissions: ["security"],
-        },
-      },
-      {
-        path: "auditRecord",
-        component: () => import("@/views/auditrecord/Index.vue"),
-        name: "AuditRecord",
-        meta: {
-          code: "menu.auditRecord",
-          icon: "auditRecord",
-          permissions: ["auditRecord"],
         },
       },
       {
@@ -232,49 +152,6 @@ const asyncRoutesArray = [
     ],
   },
   {
-    path: "/visualization",
-    component: () => import("@/layout/index.vue"),
-    name: "Visualization",
-    redirect: "noRedirect",
-    meta: {
-      code: "menu.visualization",
-      icon: "visualization",
-    },
-    children: [
-      {
-        path: "map",
-        component: () => import("@/views/visualization/MapManagement.vue"),
-        name: "Map",
-        meta: {
-          code: "menu.map",
-          icon: "map",
-          permissions: ["map"],
-        },
-      },
-      {
-        path: "visualizations",
-        component: () => import("@/views/visualization/Visualizations.vue"),
-        name: "Visualizations",
-        meta: {
-          code: "menu.visualizations",
-          icon: "visualizations",
-          permissions: ["visualizations"],
-        },
-      },
-      {
-        path: "orgnismVisualizations",
-        component: () =>
-          import("@/views/visualization/VisualizationOrgnisms.vue"),
-        name: "orgnismVisualizations",
-        meta: {
-          code: "menu.orgnismVisualizations",
-          icon: "visualizations",
-          permissions: ["orgnismVisualizations"],
-        },
-      },
-    ],
-  },
-  {
     path: "/deviceTMP",
     component: () => import("@/layout/index.vue"),
     name: "DeviceTMP",
@@ -284,7 +161,7 @@ const asyncRoutesArray = [
     children: [
       {
         path: "/deviceTMP",
-        component: () => import("@/views/environment/DeviceTMP.vue"),
+        component: () => import("@/views/dashboard/index.vue"),
         name: "DeviceTMP",
         meta: {
           code: "menu.deviceTMP",

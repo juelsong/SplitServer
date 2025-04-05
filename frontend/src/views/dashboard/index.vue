@@ -12,7 +12,7 @@
           :xl="profile.Dashboard?.XL"
           :style="{ padding: `${profile.Dashboard?.Margin ?? 0}px` }"
         >
-          <content :code="c" :height="profile.Dashboard?.Height!" />
+          <content :code="c" :height="profile.Dashboard?.Height??510" />
         </el-col>
       </el-row>
     </el-scrollbar>
