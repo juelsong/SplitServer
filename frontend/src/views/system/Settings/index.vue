@@ -35,8 +35,8 @@ export default vue.defineComponent({
   data() {
     return {
       passwordShow: true,
-      emailShow: true,
-      importExportShow: true,
+      emailShow: false,
+      importExportShow: false,
     };
   },
   mounted() {
@@ -44,7 +44,7 @@ export default vue.defineComponent({
     this.passwordShow =
       permissions.includes("Security:Password", 0) &&
       store.getters.isESysSecurity;
-    this.emailShow = permissions.includes("Security:Email", 0);
+    //this.emailShow = permissions.includes("Security:Email", 0);
     this.importExportShow = permissions.includes("Security:ImportExport", 0);
     if (this.passwordShow) {
       this.activeName = "password";

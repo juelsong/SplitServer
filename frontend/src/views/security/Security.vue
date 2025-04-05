@@ -30,7 +30,7 @@ export default {
       departmentShow: true,
       userShow: true,
       roleShow: true,
-      bookingShow: true,
+      bookingShow: false,
     };
   },
   mounted() {
@@ -39,7 +39,7 @@ export default {
     this.departmentShow = permissions.includes("department", 0);
     this.userShow = permissions.includes("user", 0);
     this.roleShow = permissions.includes("role", 0);
-    this.bookingShow = permissions.includes("booking", 0);
+    //this.bookingShow = permissions.includes("booking", 0);
   },
 };
 </script>
