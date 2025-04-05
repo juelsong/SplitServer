@@ -16,9 +16,9 @@
   <PropertyGroup>
     <DefineConstants Condition=" '$(ExtraDefineConstants)' != '' ">$(DefineConstants);$(ExtraDefineConstants)</DefineConstants>
     <FileVersion>0.0.1.6</FileVersion>
-    <Company>Metaura</Company>
+    <Company>Emis</Company>
     <Product>Emis</Product>
-    <Authors>Metaura</Authors>
+    <Authors>Emis</Authors>
   </PropertyGroup>
 
   <ItemGroup>
